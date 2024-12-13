@@ -5,6 +5,7 @@
 # Home page
 GET     /                           controllers.PersonController.index(req: Request)
 POST    /person                     controllers.PersonController.addPerson(req: Request)
+POST    /person/addAsJson           controllers.PersonController.addPersonAsJson(req: Request)
 GET     /persons                    controllers.PersonController.getPersons()
 GET     /person/:name               controllers.PersonController.getPerson(name: String)
 

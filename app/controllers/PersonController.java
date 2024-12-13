@@ -45,6 +45,12 @@ public class PersonController extends Controller {
                 .thenApplyAsync(p -> redirect(routes.PersonController.index()), ec.current());
     }
 
+    public CompletionStage<Result> addPersonAsJson(final Http.Request request) {
+        Person person = fromJson(request.body().asJson(), Person.class);
+
+        return personRepository.add(person).thenApplyAsync(p -> ok("saved success"));
+    }
+
     public CompletionStage<Result> getPersons() {
         return personRepository
                 .list()
